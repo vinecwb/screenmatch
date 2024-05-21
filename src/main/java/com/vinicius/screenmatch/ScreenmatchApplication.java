@@ -1,11 +1,10 @@
 package com.vinicius.screenmatch;
 
-import com.vinicius.screenmatch.model.DadosSerie;
-import com.vinicius.screenmatch.service.ConsumoApi;
-import com.vinicius.screenmatch.service.ConverteDados;
+import com.vinicius.screenmatch.main.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
@@ -16,11 +15,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://www.omdbapi.com/?apikey=5871183e&t=Friends");
-		System.out.println(json);
-		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Main main = new Main();
+		main.exibeMenu();
+
 	}
 }
